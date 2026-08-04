@@ -7,20 +7,10 @@ class Solution {
         r[n-1]=height[n-1];
         int sum=0;
         for(int i=1;i<n;i++){
-            if(l[i-1]<height[i]){
-                l[i]=height[i];
-            }
-            else{
-                l[i]=l[i-1];
-            }
+            l[i]=Math.max(l[i-1],height[i]);
         }
         for(int i=n-2;i>=0;i--){
-            if(r[i+1]<height[i]){
-                r[i]=height[i];
-            }
-            else{
-                r[i]=r[i+1];
-            }
+            r[i]=Math.max(r[i+1],height[i]);
         }
         for(int i=0;i<n;i++){
         sum+= (Math.min(l[i],r[i])-height[i]);
